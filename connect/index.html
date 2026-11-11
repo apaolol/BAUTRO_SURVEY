@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>bautro survey</title>
+		<link rel="stylesheet" href="styles.css">
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	</head>
+
+	<body>
+
+	
+
+		Who would win in a twerkoff charles naces or symond ridge?
+		<input id='ans1' type='text'>
+		Charles Naces vs Lebron James who will win?
+		<input id='ans2' type='text'>
+		What is the meaning of life?
+		<input id='ans3' type='text'>
+		Favorite color?
+		<input id='ans4' type='text'>
+		BBM vs Rastaman suntukan?
+		<input id='ans5' type='text'>
+		DOB?
+		<input id='ans6' type='text'>
+		Married?
+		<input id='ans7' type='text'>
+		Javarice or Iceblast sa lawesbra?
+		<input id='ans8' type='text'>
+		time sleep?
+		<input id='ans9' type='text'>
+		Charloes Naces for president?
+		<input id='ans10' type='text'>
+
+		<button type="button" onclick="clickButton(document.getElementById('ans1').value, document.getElementById('ans2').value, document.getElementById('ans3').value,
+		document.getElementById('ans4').value, document.getElementById('ans5').value, document.getElementById('ans6').value, document.getElementById('ans7').value,
+		document.getElementById('ans8').value, document.getElementById('ans9').value, document.getElementById('ans10').value)">Submit Answers</button>
+
+		<script>
+
+
+		const clickButton = (a,b,c,d,e,f,g,h,i,j) =>{
+
+			const postData = {
+				ans1:a,
+				ans2:b,
+				ans3:c,
+				ans4:d,
+				ans5:e,
+				ans6:f,
+				ans7:g,
+				ans8:h,
+				ans9:i,
+				ans10:j
+			};
+
+			const data = {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(postData)
+			}
+	
+			async function fetchData() {
+				try {
+					const response = await fetch('http://127.0.0.1:8000/answers',data);
+					const status = response.json();
+					console.log(response)
+					if (response.status =='success') {
+						document.location.href = 'profile.html.html';
+					} else {
+						throw new Error('Failed to fetch data');
+					}
+				} catch (error) {
+					console.error('Error:', error); 
+				}
+			}
+
+			fetchData()
+	
+		}
+
+		</script>
+	</body>
+</html>
